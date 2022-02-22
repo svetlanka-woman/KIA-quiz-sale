@@ -1,0 +1,20 @@
+
+@font-face {
+  font-family: 'KIA-Bold';
+  src: url('../fonts/KIAB.woff2') format('woff2'),
+      url('../fonts/KIAB.woff') format('woff'),
+      url('../fonts/KIAB.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'KIA-Medium';
+  src: url('../fonts/KIAM.woff2') format('woff2'),
+      url('../fonts/KIAM.woff') format('woff'),
+      url('../fonts/KIAM.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}

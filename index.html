@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/style.css" />
+  <title>Опрос клиента</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="start-page">
+      
+    </div>
+    <div class="header">
+      <img class="header__logo" src="img/logo.svg" alt="Логотип" />
+      <h1 class="header__title">
+        <span>Пакет услуг</span><br />“Премиальный”
+      </h1>
+    </div> <!--.header-->
+
+    <form id="form">
+      <div class="question" id="question_1">
+        <div class="question__header">
+          <div class="number"></div>
+          <ul class="indicator"></ul>
+        </div>
+
+        <div class="question__body">
+          <p class="question__text">
+            Насколько Вы довольны пакетом услуг “Премиальный” Росбанка в
+            целом?
+          </p>
+          <div class="question__answer">
+            <div class="slider_range"></div>
+            <div class="wrap_range">
+              <input class="range" name="answer_1" type="range" min="0" max="10" value="0" />
+              <span class="range_value">0</span>
+            </div>
+          </div>
+        </div>
+      </div> <!--question 1-->
+
+      <div class="question" id="question_2">
+        <div class="question__header">
+          <div class="number"></div>
+          <ul class="indicator"></ul>
+        </div>
+
+        <div class="question__body">
+          <p class="question__text">
+            Насколько простым был для Вас процесс оформления / получения
+            пакета услуг “Премиальный”?
+          </p>
+          <div class="question__answer">
+            <div class="slider_range"></div>
+            <div class="wrap_range">
+              <input class="range" name="answer_2" type="range" min="0" max="10" value="0" />
+              <span class="range_value">0</span>
+            </div>
+          </div>
+        </div>
+      </div> <!--question 2-->
+
+      <div class="question" id="question_3">
+        <div class="question__header">
+          <div class="number"></div>
+          <ul class="indicator"></ul>
+        </div>
+
+        <div class="question__body">
+          <p class="question__text">
+            Оцените достаточность и понятность информации в мобильном банке
+            или при консультации
+          </p>
+          <div class="question__answer">
+            <div class="slider_range"></div>
+            <div class="wrap_range">
+              <input class="range" name="answer_3" type="range" min="0" max="10" value="0" />
+              <span class="range_value">0</span>
+            </div>
+          </div> 
+        </div>
+      </div> <!--question 3-->
+
+      <div class="question" id="question_4">
+        <div class="question__header">
+          <div class="number"></div>
+          <ul class="indicator"></ul>
+        </div>
+
+        <div class="question__body">
+          <p class="question__text">
+            Оцените понятность тарифов и условий обслуживания
+          </p>
+          <div class="question__answer">
+            <div class="slider_range"></div>
+            <div class="wrap_range">
+              <input class="range" name="answer_4" type="range" min="0" max="10" value="0" />
+              <span class="range_value">0</span>
+            </div>
+          </div>
+        </div>
+      </div> <!--question 4-->
+
+      <div class="question" id="question_comment">
+        <div class="question__header">
+          <div class="number"></div>
+          <ul class="indicator"></ul>
+        </div>
+        <div class="question__body">
+          <p class="question__text">
+            <span>Оставьте Ваш комментарий.</span> Ваше мнение очень важно для нас!
+          </p>
+          <p><label for="comment">Оставить комментарий</label></p>
+          <p class="comment">
+            <textarea id="comment" name="comment" wrap="soft" maxlength="1000" rows="1"></textarea>
+            Ограничение количества символов в комментарии: <span id="char-limit">0 из 1000</span>
+          </p>
+        </div>
+      </div> <!--question comment-->
+
+      <div class="question" id="question_connect">
+        <div class="question__header">
+          <div class="number"></div>
+          <ul class="indicator"></ul>
+        </div>
+        <div class="question__body">
+          <p class="question__text">
+            Можем ли мы связаться с Вами по номеру телефону для более
+            подробного обсуждения Ваших ответов?
+          </p>
+          <div class="question__answer">
+            <ul class="connect_list_radio">
+                <li>
+                  <input checked type="radio" id="connect_yes" name="connect" value="yes">
+                  <label for="connect_yes">Да</label>
+                </li>
+                <li>
+                  <input type="radio" id="connect_no" name="connect" value="no">
+                  <label for="connect_no">Нет</label>
+                </li>
+            </ul>
+          </div>
+        </div>
+      </div> <!--question_connect-->
+
+      <div id="block-submit" class="hide">
+        <div class="wrap-submit">
+          <button id="submit" type="submit" form="form" value="Submit">Отправить</button>
+        </div>
+      </div>
+    </form> <!--form-->
+
+    <div class="after-submit">
+      <img class="after-submit__logo" src="img/logo.svg" alt="Логотип" />
+      <div class="after-submit__body">
+        <h2 class="after-submit__title">Благодарим <br/> за Ваш ответ!</h2>
+        <p class="after-submit__text">Нам очень важно Ваше мнение</p>
+      </div>
+    </div>
+  </div> <!--.container-->
+
+  <script src="js/script.js"></script>
+</body>
+
+</html>

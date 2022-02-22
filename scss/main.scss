@@ -1,21 +1,20 @@
 
-@import '_null';
-@import '-fonts';
 @import '_variables';
+@import '_null';
+@import '_fonts';
 
-html,
-body {
-	min-width: 500px;
-}
+
+// html,
+// body {
+// 	min-width: 500px;
+// }
 
 body {
 	color: $colorDark;
-	font-family: $font;
-	font-size: $fontSize;
 }
 
 .body {
-  background-color: $colorWhite;
+  background-color: $bgColor;
 }
 
 .wrapper {
@@ -28,9 +27,9 @@ body {
 		flex: 1 1 auto;
 	}
 	// Фикс для слайдеров
-	> * {
-		min-width: 0;
-	}
+	// > * {
+	// 	min-width: 0;
+	// }
 }
 
 .container {

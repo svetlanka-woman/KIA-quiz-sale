@@ -1,8 +1,9 @@
 .header-start-page {
   flex: 0 0 auto;
+
   // .header-start-page__logo
-  &__logo {
-  }
+  &__logo {}
+
   // .header-start-page__title
   &__title {
     font-size: 18px;
@@ -20,20 +21,38 @@
   &__title {
     flex: 0 0 auto;
     font-size: 24px;
-    margin: 47px 0 0;
+    margin: 47px 0 80px;
     line-height: 30px;
   }
 }
+
 .body-start-page__group-button {
   padding-bottom: 46px;
+
   & p {
     margin-bottom: 48px;
     font-size: 14px;
     text-transform: uppercase;
   }
+
   & .button {
     background-color: #fff;
     color: $colorDark;
   }
 }
 
+@media (max-width: 380px) {
+  .header-start-page {
+    &__title {
+      font-size: 16px;
+      margin: 38px 0 38px;
+    }
+}
+  .body-start-page {
+    &__title {
+      font-size: 22px;
+      line-height: 28px;
+      margin: 38px 0 60px;
+    }
+  }
+}

@@ -89,45 +89,18 @@ body {
   background-color: #fff;
 }
 
-.wrapper {
-  min-height: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-
 .container {
   max-width: 500px;
   margin: 0 auto;
-  height: 100%;
-  -webkit-box-flex: 1;
-      -ms-flex: 1 1 auto;
-          flex: 1 1 auto;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
 }
 
 .logo {
-  margin: 46px auto 0;
+  margin: 0 auto;
   width: 114px;
-  height: 26px;
+  height: 73px;
   background-image: url(../img/logo.svg);
   background-repeat: no-repeat;
-}
-
-.header {
-  padding: 0 20px;
-  border-bottom: 1px solid rgba(196, 196, 196, 0.6);
-  margin: 0 -20px;
+  background-position-y: 46px;
 }
 
 .button {
@@ -137,7 +110,23 @@ body {
   font-size: 18px;
 }
 
-.page-bg {
+@media (max-width: 380px) {
+  .logo {
+    background-position-y: 38px;
+  }
+}
+.start-page {
+  min-height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.start-page__container {
   background-image: url(../img/bg-start-page.jpg);
   background-repeat: no-repeat;
   background-size: cover;
@@ -156,28 +145,15 @@ body {
   text-align: center;
   padding: 0 20px;
 }
-
-@media (min-width: 468px) {
-  .page-bg {
-    padding: 0 30px;
-  }
-
-  .header {
-    padding: 0 30px;
-    border-bottom: 1px solid rgba(196, 196, 196, 0.6);
-    margin: 0 -30px;
-  }
-}
-@media (max-width: 380px) {
-  .logo {
-    margin-top: 38px;
-  }
-}
-.header-start-page {
+.start-page__header {
+  padding: 0 20px;
+  border-bottom: 1px solid rgba(196, 196, 196, 0.6);
+  margin: 0 -20px;
   -webkit-box-flex: 0;
       -ms-flex: 0 0 auto;
           flex: 0 0 auto;
 }
+
 .header-start-page__title {
   font-size: 18px;
   margin: 46px 0 45px;
@@ -222,6 +198,15 @@ body {
   color: #08141E;
 }
 
+@media (min-width: 468px) {
+  .start-page__container {
+    padding: 0 30px;
+  }
+  .start-page__header {
+    padding: 0 30px;
+    margin: 0 -30px;
+  }
+}
 @media (max-width: 380px) {
   .header-start-page__title {
     font-size: 16px;
@@ -233,6 +218,55 @@ body {
     line-height: 28px;
     margin: 38px 0 60px;
   }
+}
+.question-page {
+  display: block;
+}
+
+.header-question {
+  background-image: url(../img/bg-header-question.jpg);
+  background-repeat: no-repeat;
+  height: 233px;
+  background-size: cover;
+  text-align: center;
+}
+
+.pagination-question {
+  margin-top: 24px;
+}
+.pagination-question__fraction {
+  color: #fff;
+  font-size: 47px;
+  letter-spacing: -5.5px;
+  margin-bottom: 23px;
+}
+.pagination-question__progressbar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-column-gap: 19px;
+          column-gap: 19px;
+}
+.pagination-question__progressbar li {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 46px;
+          flex: 0 1 46px;
+  height: 2px;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+.pagination-question__progressbar li.progressbar-fill {
+  background-color: #fff;
+}
+
+.question-current {
+  font-size: 64px;
+}
+
+.question-total {
+  font-size: 18px;
 }
 
 /*# sourceMappingURL=style.css.map */

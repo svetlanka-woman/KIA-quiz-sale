@@ -14,39 +14,29 @@ body {
 	background-color: $colorWhite;
 }
 
-.wrapper {
-	min-height: 100%;
-	display: flex;
-	flex-direction: column;
+// .wrapper {
+// 	display: flex;
+// 	flex-direction: column;
 	
 	// Фикс для слайдеров
 	// > * {
 	// 	min-width: 0;
 	// }
-}
+// }
 
 .container {
 	max-width: 500px;
 	margin: 0 auto;
-	height: 100%;
-	flex: 1 1 auto; 
-	display: flex;
-	flex-direction: column;
 }
 
 // общие классы
 .logo {
-	margin: 46px auto 0;
+	margin: 0 auto;
 	width: 114px;
-	height: 26px;
+	height: 73px;
 	background-image: url(../img/logo.svg);
 	background-repeat: no-repeat;
-}
-
-.header {
-	padding: 0 20px;
-	border-bottom: 1px solid rgba(196, 196, 196, 0.6);
-	margin: 0 -20px;
+	background-position-y: 46px;
 }
 
 .button {
@@ -56,36 +46,11 @@ body {
 	font-size: 18px;
 }
 
-.page-bg {
-	background-image: url(../img/bg-start-page.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  flex: 1 0 auto;
-  height: 100%;
-  display: flex;
-	flex-direction: column;
-  color: $colorWhite;
-  text-align: center;
-  padding: 0 20px;
-}
-
-@media (min-width: 468px) {
-  .page-bg {
-		padding: 0 30px;
-	}
-	.header {
-		padding: 0 30px;
-		border-bottom: 1px solid rgba(196, 196, 196, 0.6);
-		margin: 0 -30px;
-	}
-}
-
 @media (max-width: 380px) {
 	.logo {
-		margin-top: 38px;
+		background-position-y: 38px;
 	}
 }
 
-
-
 @import '_start-page';
+@import '_question-page.scss';

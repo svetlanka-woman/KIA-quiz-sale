@@ -43,3 +43,31 @@
   font-size: 18px;
 }
 
+.question {
+  // .question__text
+  &__text {
+    font-size: 24px;
+  }
+
+  // .question__answer
+  &__answer {
+  }
+
+  // .question__grade
+  &__grade {
+  }
+
+  // .question__description-grade
+  &__description-grade {
+  }
+
+  // .question__comment
+  &__comment {
+  }
+}
+
+
+
+
+
+

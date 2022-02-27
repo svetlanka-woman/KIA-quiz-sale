@@ -15,14 +15,11 @@
     flex-direction: column;
     color: $colorWhite;
     text-align: center;
-    padding: 0 20px;
   }
 
   // .start-page__header
   &__header {
-    padding: 0 20px;
     border-bottom: 1px solid rgba(196, 196, 196, 0.6);
-    margin: 0 -20px;
     flex: 0 0 auto;
   }
 }
@@ -67,21 +64,7 @@
   }
 }
 
-@media (min-width: 468px) {
-  .start-page {
-
-    // .start-page__container
-    &__container {
-      padding: 0 30px;
-    }
-
-    // .start-page__header
-    &__header {
-      padding: 0 30px;
-      margin: 0 -30px;
-    }
-  }
-}
+//===========================================
 
 @media (max-width: 380px) {
   .header-start-page {

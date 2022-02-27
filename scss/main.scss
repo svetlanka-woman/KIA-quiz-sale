@@ -24,12 +24,18 @@ body {
 	// }
 // }
 
+// общие классы
 .container {
 	max-width: 500px;
 	margin: 0 auto;
+	padding: 0 20px;
 }
 
-// общие классы
+.header {
+	padding: 0 20px;
+	margin: 0 -20px;
+}
+
 .logo {
 	margin: 0 auto;
 	width: 114px;
@@ -44,6 +50,18 @@ body {
 	height: 46px;
 	text-align: center;
 	font-size: 18px;
+}
+
+// ===========================================
+
+@media (min-width: 468px) {
+  .container {
+    padding: 0 30px;
+  }
+	.header {
+		padding: 0 30px;
+		margin: 0 -30px;
+	}
 }
 
 @media (max-width: 380px) {

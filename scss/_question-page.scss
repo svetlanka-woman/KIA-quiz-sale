@@ -12,7 +12,7 @@
 }
 
 .pagination-question {
-  margin-top: 24px;
+  margin-top: 25px;
   // .pagination-question__fraction
   &__fraction {
     color: $colorWhite;
@@ -24,7 +24,7 @@
   &__progressbar {
     display: flex;
     justify-content: center;
-    column-gap: 19px;
+    column-gap: 20px;
     li {
       flex: 0 1 46px;
       height: 2px;
@@ -47,7 +47,9 @@
   // .question__question
   &__question {
     font-size: 24px;
-    margin: 50px 0;
+    margin: 48px 0 43px;
+    line-height: 30px;
+    letter-spacing: 0.1px;
   }
 
   // .question__answer
@@ -64,9 +66,10 @@
       flex: 0 1 auto;      
       input {
         position: absolute;
-        top: 5px;
-        left: 5px;
+        top: -10px;
+        left: 0px;
         opacity: 0;
+        cursor: default;
       }
       label {
         display: block;
@@ -78,52 +81,67 @@
         font-size: 15px;
         line-height: 28px;
         cursor: pointer;
-        // &.label-0 {
-        //   border-color: #8D0205;
-        //   &:hover, &:active {
-        //     background-color: #8D0205;
-        //   }
-        // }
-        // &.label- {
-        //   border-color: ;
-        // }
-        // &.label- {
-        //   border-color: ;
-        // }
-        // &.label- {
-        //   border-color: ;
-        // }
-        // &.label- {
-        //   border-color: ;
-        // }
-        // &.label- {
-        //   border-color: ;
-        // }
-        // &.label- {
-        //   border-color: ;
-        // }
-        // &.label- {
-        //   border-color: ;
-        // }
-        // &.label- {
-        //   border-color: ;
-        // }
-        // &.label- {
-        //   border-color: ;
-        // }
-        // &.label- {
-        //   border-color: ;
+        transition: 0.4s background-color;
+        // &[for*="-0"]:hover {
+        //   background-color: #8D0205;
         // }
       }
     }
   }
-
   // .question__description-grade
   &__description-grade {
+    margin-top: 10px;
+    line-height: 9px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 8px;
+    :last-child {
+      text-align: end;
+    }
   }
 
   // .question__comment
   &__comment {
+    margin-top: 47px;
+    padding-bottom: 47px;
+    p {
+      font-size: 24px;
+      line-height: 30px;
+      margin-bottom: 35px;
+    }
+    textarea {
+      border: none;
+      border-bottom: 1px solid $colorDark;
+      width: 100%;
+      outline: none;
+      resize: none;
+      padding: 10px 0;
+      font-size: 14px;
+      overflow: hidden;
+      &::placeholder {
+        color: rgba(0, 0, 0, 0.4);
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+//=======================================
+@media (max-width: 380px) {
+  .header-question {
+    height: 215px;
+  }
+  .pagination-question {
+    margin-top: 14px;
+  }
+  .question__grade {
+    li {
+      label {
+        height: 26px;
+        width: 26px;
+        line-height: 25px;
+      }
+    }
   }
 }
 

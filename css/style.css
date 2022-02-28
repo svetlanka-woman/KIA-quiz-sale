@@ -18,7 +18,6 @@ body {
 
 body {
   line-height: 1;
-  font-family: "KIA-Bold", serif;
 }
 
 input,
@@ -87,6 +86,7 @@ body {
 body {
   color: #08141E;
   background-color: #fff;
+  font-family: "KIA-Bold", serif;
 }
 
 .container {
@@ -127,6 +127,15 @@ body {
   }
 }
 @media (max-width: 380px) {
+  .container {
+    padding: 0 15px;
+  }
+
+  .header {
+    padding: 0 15px;
+    margin: 0 -15px;
+  }
+
   .logo {
     background-position-y: 38px;
   }
@@ -236,7 +245,7 @@ body {
 }
 
 .pagination-question {
-  margin-top: 24px;
+  margin-top: 25px;
 }
 .pagination-question__fraction {
   color: #fff;
@@ -251,8 +260,8 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  -webkit-column-gap: 19px;
-          column-gap: 19px;
+  -webkit-column-gap: 20px;
+          column-gap: 20px;
 }
 .pagination-question__progressbar li {
   -webkit-box-flex: 0;
@@ -275,7 +284,9 @@ body {
 
 .question__question {
   font-size: 24px;
-  margin: 50px 0;
+  margin: 48px 0 43px;
+  line-height: 30px;
+  letter-spacing: 0.1px;
 }
 .question__grade {
   display: -webkit-box;
@@ -294,9 +305,10 @@ body {
 }
 .question__grade li input {
   position: absolute;
-  top: 5px;
-  left: 5px;
+  top: -10px;
+  left: 0px;
   opacity: 0;
+  cursor: default;
 }
 .question__grade li label {
   display: block;
@@ -311,6 +323,73 @@ body {
   font-size: 15px;
   line-height: 28px;
   cursor: pointer;
+  -webkit-transition: 0.4s background-color;
+  transition: 0.4s background-color;
+}
+.question__description-grade {
+  margin-top: 10px;
+  line-height: 9px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  font-size: 8px;
+}
+.question__description-grade :last-child {
+  text-align: end;
+}
+.question__comment {
+  margin-top: 47px;
+  padding-bottom: 47px;
+}
+.question__comment p {
+  font-size: 24px;
+  line-height: 30px;
+  margin-bottom: 35px;
+}
+.question__comment textarea {
+  border: none;
+  border-bottom: 1px solid #08141E;
+  width: 100%;
+  outline: none;
+  resize: none;
+  padding: 10px 0;
+  font-size: 14px;
+  overflow: hidden;
+}
+.question__comment textarea::-webkit-input-placeholder {
+  color: rgba(0, 0, 0, 0.4);
+  font-size: 14px;
+}
+.question__comment textarea:-ms-input-placeholder {
+  color: rgba(0, 0, 0, 0.4);
+  font-size: 14px;
+}
+.question__comment textarea::-ms-input-placeholder {
+  color: rgba(0, 0, 0, 0.4);
+  font-size: 14px;
+}
+.question__comment textarea::placeholder {
+  color: rgba(0, 0, 0, 0.4);
+  font-size: 14px;
+}
+
+@media (max-width: 380px) {
+  .header-question {
+    height: 215px;
+  }
+
+  .pagination-question {
+    margin-top: 14px;
+  }
+
+  .question__grade li label {
+    height: 26px;
+    width: 26px;
+    line-height: 25px;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

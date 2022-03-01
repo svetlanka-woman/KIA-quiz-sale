@@ -5,6 +5,7 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
   <link rel="stylesheet" href="css/style.css" />
   <title>Опрос клиента</title>
 </head>
@@ -12,14 +13,14 @@
 <body>
   <div class="start-page">
     <div class="start-page__container container">
-      <div class="start-page__header header-start-page header">
+      <div class="start-page__header header-start-page padding-left-right">
         <div class="header-start-page__logo logo"></div>
         <div class="header-start-page__title">
           <p>Allur Motor Qazaqstan, официальный Дистрибьютор бренда Kia в Республике Казахстан выражает вам свое почтение и благодарность за выбор бренда Kia!
           </p>
         </div>
       </div>
-      <div class="start-page__body body-start-page">
+      <div class="start-page__body body-start-page padding-left-right">
         <div class="body-start-page__title">
           <p>Позвольте предложить Вам пройти опрос на тему удовлетворённости качеством обслуживания и оказания услуг.</p>
         </div>
@@ -34,13 +35,13 @@
   <div class="question-page">
     <div class="question-page__container container">
       
-      <div class="question-page__header header-question header">         
+      <div class="question-page__header header-question padding-left-right">         
         <div class="header-question__logo logo"></div>
         <div class="header-question__pagination pagination-question">
-          <div class="pagination-question__fraction">
-            <span class="question-current">1</span>
+          <div class="pagination-question__fraction swiper-pagination">
+            <!-- <span class="question-current">1</span>
             /
-            <span class="question-total">4</span>
+            <span class="question-total">4</span> -->
           </div>
           <ul class="pagination-question__progressbar">
             <li class="progressbar-fill"></li>
@@ -52,29 +53,83 @@
       </div>
 
       <form id="form1" class="question-page__form">
-        <div id="q1" class="question">
-          <div class="question__question">
-            <p>Насколько в целом Вы довольны покупкой Вашего нового автомобиля в дилерском центре? </p>
-          </div>
-          <div class="question__answer">
-            <ul class="question__grade">
-              <!-- renderQuestionGrades() -->
-            </ul>
-            <div class="question__description-grade">
-              <span>Совершенно <br> не доволен</span>
-              <span>Полностью <br> доволен</span>
+        <!-- Slider main container -->
+        <div class="swiper">
+          <!-- Additional required wrapper -->
+          <div class="swiper-wrapper">
+            <!-- Slides -->
+            <div class="swiper-slide">
+              <div id="q1" class="question padding-left-right">
+                <div class="question__question">
+                  <p>Насколько в целом Вы довольны покупкой Вашего нового автомобиля в дилерском центре? </p>
+                </div>
+                <div class="question__answer">
+                  <ul class="question__grade">
+                    <!-- renderQuestionGrades() -->
+                  </ul>
+                  <div class="question__description-grade">
+                    <span>Совершенно <br> не доволен</span>
+                    <span>Полностью <br> доволен</span>
+                  </div>
+                  <div class="question__comment">
+                    <p>Прокомментируйте, пожалуйста, почему Вы поставили невысокую оценку?</p>
+                    <textarea class="comment" name="q1-comment" placeholder="Ваш комментарий" wrap="soft" maxlength="1000" rows="1"></textarea>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="question__comment">
-              <p>Прокомментируйте, пожалуйста, почему Вы поставили невысокую оценку?</p>
-              <textarea class="comment" name="q1-comment" placeholder="Ваш комментарий" wrap="soft" maxlength="1000" rows="1"></textarea>
+            <div class="swiper-slide">
+              <div id="q2" class="question padding-left-right">
+                <div class="question__question">
+                  <p>Оцените, пожалуйста, какова вероятность того, что Вы порекомендуете данный дилерский центр своим друзьям и знакомым?</p>
+                </div>
+                <div class="question__answer">
+                  <ul class="question__grade">
+                    <!-- renderQuestionGrades() -->
+                  </ul>
+                  <div class="question__description-grade">
+                    <span>Совершенно <br> не доволен</span>
+                    <span>Полностью <br> доволен</span>
+                  </div>
+                  <div class="question__comment">
+                    <p>Прокомментируйте, пожалуйста, почему Вы поставили невысокую оценку?</p>
+                    <textarea class="comment" name="q1-comment" placeholder="Ваш комментарий" wrap="soft" maxlength="1000" rows="1"></textarea>
+                  </div>
+                </div>
+              </div>
             </div>
+            <div class="swiper-slide">
+              <div id="q3" class="question padding-left-right">
+                <div class="question__question">
+                  <p>Насколько Вы остались довольны процессом выдачи автомобиля, включая его чистоту, праздничную атмосферу, достаточное внимание со стороны персонала?</p>
+                </div>
+                <div class="question__answer">
+                  <ul class="question__grade">
+                    <!-- renderQuestionGrades() -->
+                  </ul>
+                  <div class="question__description-grade">
+                    <span>Совершенно <br> не доволен</span>
+                    <span>Полностью <br> доволен</span>
+                  </div>
+                  <div class="question__comment">
+                    <p>Прокомментируйте, пожалуйста, почему Вы поставили невысокую оценку?</p>
+                    <textarea class="comment" name="q1-comment" placeholder="Ваш комментарий" wrap="soft" maxlength="1000" rows="1"></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+            ...
           </div>
+
         </div>
+
+        
       </form>
 
     </div>
   </div> <!--* question-page -->
 
+  <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
   <script src="js/script.js"></script>
 </body>
 

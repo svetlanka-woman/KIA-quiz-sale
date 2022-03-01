@@ -49,5 +49,39 @@ window.addEventListener('DOMContentLoaded', () => {
     });
   });
   
+  new Swiper('.swiper', {
+    pagination: {
+          el: '.swiper-pagination',
+          type: 'fraction',
+          renderFraction: function(currentClass, totalClass) {
+            return `
+              <span class="question-current ${currentClass}"></span>
+              /
+              <span class="question-total ${totalClass}"></span>
+              `
+          }
+        },
+  });
+  // const swiper = new Swiper('.swiper', {
+  //   // Optional parameters
+  //   direction: 'vertical',
+  //   loop: true,
+  
+  //   // If we need pagination
+  //   pagination: {
+  //     el: '.swiper-pagination',
+  //   },
+  
+  //   // Navigation arrows
+  //   navigation: {
+  //     nextEl: '.swiper-button-next',
+  //     prevEl: '.swiper-button-prev',
+  //   },
+  
+  //   // And if we need scrollbar
+  //   scrollbar: {
+  //     el: '.swiper-scrollbar',
+  //   },
+  // });
 
 });

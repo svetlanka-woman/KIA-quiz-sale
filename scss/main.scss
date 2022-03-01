@@ -29,12 +29,10 @@ body {
 .container {
 	max-width: 500px;
 	margin: 0 auto;
-	padding: 0 20px;
 }
 
-.header {
+.padding-left-right {
 	padding: 0 20px;
-	margin: 0 -20px;
 }
 
 .logo {
@@ -56,23 +54,15 @@ body {
 // ===========================================
 
 @media (min-width: 468px) {
-  .container {
+  .padding-left-right {
     padding: 0 30px;
   }
-	.header {
-		padding: 0 30px;
-		margin: 0 -30px;
-	}
 }
 
 @media (max-width: 380px) {
-	.container {
+	.padding-left-right {
     padding: 0 15px;
   }
-	.header {
-		padding: 0 15px;
-		margin: 0 -15px;
-	}
 	.logo {
 		background-position-y: 38px;
 	}

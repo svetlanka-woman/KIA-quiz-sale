@@ -26,13 +26,13 @@
         </div>
         <div class="body-start-page__group-button">
           <p>Нам очень важно знать ваше мнение!</p>
-          <button class="button">Пройти опрос</button>
+          <button id="start-button" class="button">Пройти опрос</button>
         </div>
       </div>
     </div> 
   </div> <!--* start-page -->
 
-  <div class="question-page">
+  <div class="question-page hide">
     <div class="question-page__container container">
       
       <div class="question-page__header header-question padding-left-right">         
@@ -91,6 +91,9 @@
                     <span>Совершенно <br> не доволен</span>
                     <span>Полностью <br> доволен</span>
                   </div>
+                  <ul class="question__grade">
+                    <!-- renderQuestionGrades() -->
+                  </ul>
                   <div class="question__comment">
                     <p>Прокомментируйте, пожалуйста, почему Вы поставили невысокую оценку?</p>
                     <textarea class="comment" name="q1-comment" placeholder="Ваш комментарий" wrap="soft" maxlength="1000" rows="1"></textarea>

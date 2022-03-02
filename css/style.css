@@ -11,6 +11,16 @@
           box-sizing: border-box;
 }
 
+:focus,
+:active {
+  outline: none;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
 html,
 body {
   height: 100%;
@@ -133,7 +143,6 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  display: none;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -315,7 +324,6 @@ body {
           user-select: none;
   font-size: 15px;
   line-height: 28px;
-  cursor: pointer;
   -webkit-transition: 0.4s background-color;
   transition: 0.4s background-color;
 }
@@ -397,6 +405,43 @@ body {
     line-height: 28px;
     margin-bottom: 18px;
   }
+}
+.hide {
+  display: none;
+}
+
+.fade {
+  -webkit-animation-name: fade;
+          animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+          animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {
+    opacity: 0.1;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0.1;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.show {
+  display: block;
+}
+
+.show-flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 /*# sourceMappingURL=style.css.map */

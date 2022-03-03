@@ -16,25 +16,66 @@ window.addEventListener('DOMContentLoaded', () => {
         </li>
         `
       };
-
-      const inputGrade = grade.querySelectorAll('input'),
-            labelGrade = grade.querySelectorAll('label');
-      
-      inputGrade.forEach((input, i) => {
-        function onchangeInputGrade() {
-          if (input.checked) {
-            labelGrade.forEach(label => {
-              label.style.backgroundColor = 'transparent';
-            });
-            labelGrade[i].style.backgroundColor = arrColorsGrade[i];
-          }
-        }
-        input.addEventListener('change', onchangeInputGrade);
-      });
     });
   }
 
   renderQuestionGrades();
+
+  function scrollShowElement(elem) {
+    let elemHeight = elem.getBoundingClientRect().height;  
+
+    window.scrollBy({
+      top: elemHeight + 20, 
+      behavior: 'smooth'
+    });
+  }
+
+  function scrollTopPage() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }
+
+  function onchangeInputGrade() {
+    questionGrades.forEach(grade => {
+      
+      const inputGrade = grade.querySelectorAll('input'),
+            bulletGrade = grade.querySelectorAll('label');
+      let comment = ''; 
+            
+      if (grade.nextElementSibling.nextElementSibling.classList.contains('question__comment')) {
+        comment = grade.nextElementSibling.nextElementSibling;
+        comment.classList.add('hide');
+      };
+      
+      inputGrade.forEach((input, i) => {
+        input.addEventListener('change', () => {
+          if (input.checked) {
+            // change bg-color in bullets
+            bulletGrade.forEach(bullet => {
+              bullet.style.backgroundColor = 'transparent';
+            });
+            bulletGrade[i].style.backgroundColor = arrColorsGrade[i];
+            if (input.value <= 7) {
+              comment.classList.add('show', 'fade');
+              comment.classList.remove('hide', 'fade-out');
+              scrollShowElement(comment);
+            } else {
+              scrollTopPage();
+              setTimeout(() => {
+                comment.classList.add('hide');
+              }, 400)
+              comment.classList.add('fade-out');
+              comment.classList.remove('show', 'fade');
+            }
+          }
+        });
+      });
+    });
+  }
+
+  onchangeInputGrade();
 
   const textareaComment = document.querySelectorAll('.comment');
 

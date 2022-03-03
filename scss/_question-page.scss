@@ -80,7 +80,7 @@
         z-index: -1;
         cursor: default;
       }
-      label {
+      label.bullet-grade {
         display: block;
         height: 29px;
         width: 29px;
@@ -111,8 +111,10 @@
 
   // .question__comment
   &__comment {
+    // transition: 1.5s display;
     margin-top: 47px;
     padding-bottom: 47px;
+    // opacity: 0;
     p {
       font-size: 24px;
       line-height: 30px;
@@ -152,7 +154,7 @@
     }
     &__grade {
       li {
-        label {
+        label.bullet-grade {
           height: 26px;
           width: 26px;
           line-height: 25px;

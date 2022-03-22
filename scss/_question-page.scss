@@ -33,7 +33,7 @@
       flex: 0 1 46px;
       height: 2px;
       background-color: rgba(255, 255, 255, 0.5);
-      &.progressbar-fill {
+      &.fill {
         background-color: $colorWhite;
       }
     }
@@ -47,11 +47,22 @@
   font-size: 18px;
 }
 
+.swiper {
+  // display: grid;
+}
+
 .swiper-pagination {
   position: static;
 }
 
 .question {
+  &.question-simple {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 26px;
+  }  
   // .question__question
   &__question {
     font-size: 24px;
@@ -88,12 +99,8 @@
         border-radius: 50%;
         user-select: none;
         font-size: 15px;
-        line-height: 28px;
-        // cursor: pointer;
+        line-height: 27px;
         transition: 0.4s background-color;
-        // &[for*="-0"]:hover {
-        //   background-color: #8D0205;
-        // }
       }
     }
   }

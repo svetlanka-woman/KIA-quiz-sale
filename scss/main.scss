@@ -49,6 +49,22 @@ body {
 	height: 46px;
 	text-align: center;
 	font-size: 18px;
+	margin-bottom: 20px;
+}
+
+.button-black {
+	background-color: $colorDark;
+	color: $colorWhite;
+}
+
+.button-white {
+	background-color: $colorWhite;
+	color: $colorDark;
+}
+
+.button-bd-black {
+	border: 1px solid $colorDark;
+	color: $colorDark;
 }
 
 // ===========================================

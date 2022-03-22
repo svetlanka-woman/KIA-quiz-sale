@@ -21,6 +21,18 @@ window.addEventListener('DOMContentLoaded', () => {
 
   renderQuestionGrades();
 
+  const progressBar = document.querySelector('.pagination-question__progressbar'),
+        slidesForm1 = document.querySelectorAll('#form1 .swiper-slide');
+
+  function renderProgressBar() {
+    progressBar.innerHTML = '<li class="fill"></li>';
+    for (let k = 1; k < slidesForm1.length; k++) {
+      progressBar.innerHTML += '<li></li>';
+    }
+  }
+
+  renderProgressBar();
+ 
   function scrollShowElement(elem) {
     let elemHeight = elem.getBoundingClientRect().height;  
 
@@ -37,6 +49,12 @@ window.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  function swiperNext() {
+    setTimeout(() => {
+      swiper.slideNext(800);
+    }, 1000);
+  }
+
   function onchangeInputGrade() {
     questionGrades.forEach(grade => {
       
@@ -49,6 +67,11 @@ window.addEventListener('DOMContentLoaded', () => {
         comment.classList.add('hide');
       };
       
+      comment.addEventListener('change', () => {
+        scrollTopPage();
+        swiperNext();
+      });
+
       inputGrade.forEach((input, i) => {
         input.addEventListener('change', () => {
           if (input.checked) {
@@ -57,6 +80,7 @@ window.addEventListener('DOMContentLoaded', () => {
               bullet.style.backgroundColor = 'transparent';
             });
             bulletGrade[i].style.backgroundColor = arrColorsGrade[i];
+            
             if (input.value <= 7) {
               comment.classList.add('show', 'fade');
               comment.classList.remove('hide', 'fade-out');
@@ -65,9 +89,10 @@ window.addEventListener('DOMContentLoaded', () => {
               scrollTopPage();
               setTimeout(() => {
                 comment.classList.add('hide');
-              }, 400)
+              }, 400);
               comment.classList.add('fade-out');
               comment.classList.remove('show', 'fade');
+              swiperNext();
             }
           }
         });
@@ -98,7 +123,7 @@ window.addEventListener('DOMContentLoaded', () => {
     questionPage.classList.toggle('fade');
   })
   
-  new Swiper('.swiper', {
+  const swiper = new Swiper('.swiper', {
     pagination: {
       el: '.swiper-pagination',
       type: 'fraction',
@@ -111,26 +136,15 @@ window.addEventListener('DOMContentLoaded', () => {
       }
     },
   });
-  // const swiper = new Swiper('.swiper', {
-  //   // Optional parameters
-  //   direction: 'vertical',
-  //   loop: true,
-  
-  //   // If we need pagination
-  //   pagination: {
-  //     el: '.swiper-pagination',
-  //   },
-  
-  //   // Navigation arrows
-  //   navigation: {
-  //     nextEl: '.swiper-button-next',
-  //     prevEl: '.swiper-button-prev',
-  //   },
-  
-  //   // And if we need scrollbar
-  //   scrollbar: {
-  //     el: '.swiper-scrollbar',
-  //   },
-  // });
+
+  const questionsSimple = document.querySelectorAll('.question-simple'),
+        headerQuestion = document.querySelector('.header-question'),
+        headerQuestionHeight = window.getComputedStyle(headerQuestion).height,
+        windowInnerHeight = document.documentElement.clientHeight;
+
+
+  questionsSimple.forEach(question => {
+    question.style.height = windowInnerHeight - headerQuestionHeight.slice(0,-2) + 'px';
+  })
 
 });

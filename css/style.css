@@ -123,6 +123,8 @@ body {
   text-align: center;
   font-size: 18px;
   margin-bottom: 20px;
+  display: inline-block;
+  line-height: 46px;
 }
 
 .button-black {
@@ -308,6 +310,15 @@ body {
       -ms-flex-pack: justify;
           justify-content: space-between;
   padding-bottom: 26px;
+}
+.question.question-simple .question__answer {
+  position: relative;
+}
+.question.question-simple input {
+  position: absolute;
+  opacity: 0;
+  z-index: -1;
+  cursor: default;
 }
 .question__question {
   font-size: 24px;

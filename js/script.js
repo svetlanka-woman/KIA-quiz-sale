@@ -134,8 +134,25 @@ window.addEventListener('DOMContentLoaded', () => {
           <span class="question-total ${totalClass}"></span>
           `
       }
-    },
+    }
   });
+
+  
+  function progressBarFilling() {
+    const fractionsProgressBar = [...progressBar.children];
+
+    swiper.on('slideChange', () => {
+      fractionsProgressBar.forEach((fraction, f) => {
+        if (f <= swiper.activeIndex) {
+          fraction.classList.add('fill');
+        } else {
+          fraction.classList.remove('fill');
+        }
+      });
+    });
+  }
+
+  progressBarFilling();
 
   const questionsSimple = document.querySelectorAll('.question-simple'),
         headerQuestion = document.querySelector('.header-question'),

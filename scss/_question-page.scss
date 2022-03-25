@@ -47,10 +47,6 @@
   font-size: 18px;
 }
 
-.swiper {
-  // display: grid;
-}
-
 .swiper-pagination {
   position: static;
 }
@@ -62,6 +58,15 @@
     flex-direction: column;
     justify-content: space-between;
     padding-bottom: 26px;
+    .question__answer {
+      position: relative;
+    }
+    input {
+      position: absolute;
+      opacity: 0;
+      z-index: -1;
+      cursor: default;
+    }
   }  
   // .question__question
   &__question {

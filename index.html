@@ -47,7 +47,7 @@
         </div>
       </div>
 
-      <form id="form1" class="question-page__form">
+      <form id="form1" name="form1" class="question-page__form">
         <!-- Slider main container -->
         <div class="swiper">
           <!-- Additional required wrapper -->
@@ -119,8 +119,10 @@
                   <p>Вы желаете, чтобы дилерский центр связался с Вами по поводу Вашего отзыва?</p>
                 </div>
                 <div class="question__answer">
-                  <button class="button button-black">Да</button>
-                  <button class="button button-bd-black">Нет</button>
+                  <input type="radio" id="q4-yes" name="q4" value="yes">
+                  <label for="q4-yes" class="button button-black">Да</label>
+                  <input type="radio" id="q4-no" name="q4" value="no">
+                  <label for="q4-no" class="button button-bd-black">Нет</label>
                 </div>
               </div>
             </div>

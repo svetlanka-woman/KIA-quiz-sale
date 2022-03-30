@@ -1,7 +1,6 @@
 .start-page {
   min-height: 100%;
   display: flex;
-  // display: none;
   flex-direction: column;
 
   // .start-page__container
@@ -44,18 +43,32 @@
   &__title {
     flex: 0 0 auto;
     font-size: 24px;
-    margin: 47px 0 80px;
+    margin: 47px 0 58px;
     line-height: 30px;
   }
 }
 
 .body-start-page__group-button {
   padding-bottom: 26px;
+}
 
-  p {
-    margin-bottom: 48px;
-    font-size: 14px;
-    text-transform: uppercase;
+.body-start-page__text {
+  margin-bottom: 48px;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.start-page.next {
+  .body-start-page__text {
+    margin-top: 39px;
+    margin-bottom: 0;
+  }
+}
+
+.start-page.end {
+  .header-start-page__title {
+    font-size: 24px;
+    line-height: 30px;
   }
 }
 

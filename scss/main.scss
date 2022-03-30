@@ -15,16 +15,6 @@ body {
 	font-family: $fontKIABold;
 }
 
-// .wrapper {
-// 	display: flex;
-// 	flex-direction: column;
-	
-	// Фикс для слайдеров
-	// > * {
-	// 	min-width: 0;
-	// }
-// }
-
 // общие классы
 .container {
 	max-width: 500px;
@@ -67,6 +57,11 @@ body {
 .button-bd-black {
 	border: 1px solid $colorDark;
 	color: $colorDark;
+}
+
+.button-bd-white {
+	border: 1px solid $colorWhite;
+	color: $colorWhite;
 }
 
 // ===========================================

@@ -25,7 +25,7 @@
           <p>Позвольте предложить Вам пройти опрос на тему удовлетворённости качеством обслуживания и оказания услуг.</p>
         </div>
         <div class="body-start-page__group-button">
-          <p>Нам очень важно знать ваше мнение!</p>
+          <p class="body-start-page__text">Нам очень важно знать ваше мнение!</p>
           <button id="start-button" class="button button-white">Пройти опрос</button>
         </div>
       </div>
@@ -49,7 +49,7 @@
 
       <form id="form1" name="form1" class="question-page__form">
         <!-- Slider main container -->
-        <div class="swiper">
+        <div class="swiper swiper1">
           <!-- Additional required wrapper -->
           <div class="swiper-wrapper">
             <!-- Slides -->
@@ -58,18 +58,8 @@
                 <div class="question__question">
                   <p>Насколько в целом Вы довольны покупкой Вашего нового автомобиля в дилерском центре? </p>
                 </div>
-                <div class="question__answer">
-                  <ul class="question__grade">
-                    <!-- renderQuestionGrades() -->
-                  </ul>
-                  <div class="question__description-grade">
-                    <span>Совершенно <br> не доволен</span>
-                    <span>Полностью <br> доволен</span>
-                  </div>
-                  <div class="question__comment">
-                    <p>Прокомментируйте, пожалуйста, почему Вы поставили невысокую оценку?</p>
-                    <textarea class="comment" name="q1-comment" placeholder="Ваш комментарий" wrap="soft" maxlength="1000" rows="1"></textarea>
-                  </div>
+                <div class="question__answer answer-grade">
+                  <!-- renderAnswer() -->
                 </div>
               </div>
             </div>
@@ -78,18 +68,8 @@
                 <div class="question__question">
                   <p>Оцените, пожалуйста, какова вероятность того, что Вы порекомендуете данный дилерский центр своим друзьям и знакомым?</p>
                 </div>
-                <div class="question__answer">
-                  <ul class="question__grade">
-                    <!-- renderQuestionGrades() -->
-                  </ul>
-                  <div class="question__description-grade">
-                    <span>Совершенно <br> не доволен</span>
-                    <span>Полностью <br> доволен</span>
-                  </div>
-                  <div class="question__comment">
-                    <p>Прокомментируйте, пожалуйста, почему Вы поставили невысокую оценку?</p>
-                    <textarea class="comment" name="q1-comment" placeholder="Ваш комментарий" wrap="soft" maxlength="1000" rows="1"></textarea>
-                  </div>
+                <div class="question__answer answer-grade">
+                  <!-- renderAnswer() -->
                 </div>
               </div>
             </div>
@@ -98,18 +78,8 @@
                 <div class="question__question">
                   <p>Насколько Вы остались довольны процессом выдачи автомобиля, включая его чистоту, праздничную атмосферу, достаточное внимание со стороны персонала?</p>
                 </div>
-                <div class="question__answer">
-                  <ul class="question__grade">
-                    <!-- renderQuestionGrades() -->
-                  </ul>
-                  <div class="question__description-grade">
-                    <span>Совершенно <br> не доволен</span>
-                    <span>Полностью <br> доволен</span>
-                  </div>
-                  <div class="question__comment">
-                    <p>Прокомментируйте, пожалуйста, почему Вы поставили невысокую оценку?</p>
-                    <textarea class="comment" name="q1-comment" placeholder="Ваш комментарий" wrap="soft" maxlength="1000" rows="1"></textarea>
-                  </div>
+                <div class="question__answer answer-grade">
+                  <!-- renderAnswer() -->
                 </div>
               </div>
             </div>
@@ -127,14 +97,195 @@
               </div>
             </div>
           </div>
-
-        </div>
-
-        
+        </div> 
       </form>
-
     </div>
   </div> <!--* question-page -->
+
+  <div class="start-page next hide">
+    <div class="start-page__container container">
+      <div class="start-page__header header-start-page padding-left-right">
+        <div class="header-start-page__logo logo"></div>
+        <div class="header-start-page__title">
+          <p>Благодарим Вас за уделенное время и прохождение опроса! 
+          </p>
+        </div>
+      </div>
+      <div class="start-page__body body-start-page padding-left-right">
+        <div class="body-start-page__title">
+          <p>Просим вас ответить еще на несколько вопросов</p>
+          <p class="body-start-page__text">Это займет не более 3-5 минут</p>
+        </div>
+        <div class="body-start-page__group-button">
+          <button class="button button-white">Да</button>
+          <button class="button button-bd-white">Нет</button>
+        </div>
+      </div>
+    </div> 
+  </div> <!--* start-page next -->
+
+  <div class="question-page next">
+    <div class="question-page__container container">
+      
+      <div class="question-page__header header-question padding-left-right">         
+        <div class="header-question__logo logo"></div>
+        <div class="header-question__pagination pagination-question">
+          <div class="pagination-question__fraction swiper-pagination-next">
+            <!-- pagination[renderFraction] -->
+          </div>
+          <ul class="pagination-question__progressbar">
+            <!-- renderProgressBar() -->
+          </ul>
+        </div>
+      </div>
+
+      <form id="form2" name="form2" class="question-page__form">
+        <!-- Slider main container -->
+        <div class="swiper swiper2">
+          <!-- Additional required wrapper -->
+          <div class="swiper-wrapper">
+            
+            <!-- Slides -->
+            <div class="swiper-slide">
+              <div id="q5" class="question padding-left-right">
+                <div class="question__question">
+                  <p>Пожалуйста, оцените по шкале от 1 до 10, насколько менеджер был компетентен и доброжелателен с Вами?</p>
+                </div>
+                <div class="question__answer answer-grade">
+                  <!-- renderAnswer() -->
+                </div>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div id="q6" class="question padding-left-right">
+                <div class="question__question">
+                  <p>Оцените, пожалуйста, насколько полную информацию об автомобиле и способах его покупки предоставил Вам менеджер?</p>
+                </div>
+                <div class="question__answer answer-grade">
+                  <!-- renderAnswer() -->
+                </div>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div id="q7" class="question question-simple padding-left-right">
+                <div class="question__question">
+                  <p>Вам предложили пройти тест-драйв в автосалоне?</p>
+                </div>
+                <div class="question__answer">
+                  <input type="radio" id="q7-yes" name="q7" value="yes">
+                  <label for="q7-yes" class="button button-black">Да</label>
+                  <input type="radio" id="q7-no" name="q7" value="no">
+                  <label for="q7-no" class="button button-bd-black">Нет</label>
+                  <input type="radio" id="q7-no-need" name="q7" value="no-need">
+                  <label for="q7-no-need" class="button button-bd-black">Не было необходимости</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div id="q8-1" class="question question-simple padding-left-right">
+                <div class="question__question">
+                  <p>Менеджер говорил о возможности прохождения тест-драйва</p>
+                </div>
+                <div class="question__answer">
+                  <input type="radio" id="q8-1-yes" name="q8-1" value="yes">
+                  <label for="q8-1-yes" class="button button-black">Да</label>
+                  <input type="radio" id="q8-1-no" name="q8-1" value="no">
+                  <label for="q8-1-no" class="button button-bd-black">Нет</label>
+                </div>
+              </div>
+              <div id="q8-2" class="question question-simple padding-left-right">
+                <div class="question__question">
+                  <p>Вы совершили тест-драйв?</p>
+                </div>
+                <div class="question__answer">
+                  <input type="radio" id="q8-2-yes" name="q8-2" value="yes">
+                  <label for="q8-2-yes" class="button button-black">Да</label>
+                  <input type="radio" id="q8-2-no" name="q8-2" value="no">
+                  <label for="q8-2-no" class="button button-bd-black">Нет</label>
+                </div>
+              </div>
+              <div id="q8-3" class="question padding-left-right">
+                <div class="question__question">
+                  <p>Насколько бы Вы оценили проведенный тест-драйв?</p>
+                </div>
+                <div class="question__answer answer-grade">
+                  <!-- renderAnswer() -->
+                </div>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div id="q9" class="question padding-left-right">
+                <div class="question__question">
+                  <p>Насколько Вам понравилась зона ожидания для клиентов, включая дополнительные удобства (комфорт клиентской зоны, кафе, wi-fi, приятная музыка, чистота и пр.)?</p>
+                </div>
+                <div class="question__answer answer-grade">
+                  <!-- renderAnswer() -->
+                </div>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div id="q10" class="question question-simple padding-left-right">
+                <div class="question__question">
+                  <p>Связывалась ли с Вами из дилерского центра после покупки автомобиля?</p>
+                </div>
+                <div class="question__answer">
+                  <input type="radio" id="q10-yes" name="q10" value="yes">
+                  <label for="q10-yes" class="button button-black">Да</label>
+                  <input type="radio" id="q10-no" name="q10" value="no">
+                  <label for="q10-no" class="button button-bd-black">Нет</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div id="q11" class="question padding-left-right">
+                <div class="question__question">
+                  <p>Если во время процесса покупки автомобиля возникали какие-либо трудности, оцените, пожалуйста, способность дилера решить их?</p>
+                </div>
+                <div class="question__answer answer-grade">
+                  <!-- renderAnswer() -->
+                </div>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div id="q12" class="question padding-left-right">
+                <div class="question__question">
+                  <p>Насколько вероятно то, что Вы будете посещать данный дилерский центр для сервисного обслуживания в будущем?</p>
+                </div>
+                <div class="question__answer answer-grade">
+                  <!-- renderAnswer() -->
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div> 
+      </form>
+    </div>
+  </div> <!--* question-page next-->
+
+  <div class="start-page end hide">
+    <div class="start-page__container container">
+      <div class="start-page__header header-start-page padding-left-right">
+        <div class="header-start-page__logo logo"></div>
+        <div class="header-start-page__title">
+          <p>Благодарим Вас за уделенное время и прохождение опроса!  
+          </p>
+        </div>
+      </div>
+      <div class="start-page__body body-start-page padding-left-right">
+        <div class="body-start-page__title">
+          <p class="body-start-page__text">Нам очень важно знать ваше мнение!</p>
+        </div>
+      </div>
+    </div> 
+  </div> <!--* start-page end -->
 
   <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
   <script src="js/script.js"></script>

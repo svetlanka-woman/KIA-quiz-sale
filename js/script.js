@@ -1,12 +1,27 @@
 window.addEventListener('DOMContentLoaded', () => {
   "use strict";
 
-  const questionGrades = document.querySelectorAll('.question__grade'),
+  const answers = document.querySelectorAll('.answer-grade'),
         arrColorsGrade = ['#8D0205', '#AE0D07', '#FE5A59', '#FF8353', '#E2A913', '#FFA400', '#D7E317', '#C5F65C', '#00E355', '#00AB23', '#079D26'];
 
-  function renderQuestionGrades() {
-    questionGrades.forEach(grade => {
-      const questionId = grade.parentElement.parentElement.getAttribute('id');
+  function renderAnswer() {
+    answers.forEach(answer => {
+      const questionId = answer.parentElement.getAttribute('id');
+      
+      answer.innerHTML += `
+        <ul class="question__grade">
+        </ul>
+        <div class="question__description-grade">
+          <span>Совершенно <br> не доволен</span>
+          <span>Полностью <br> доволен</span>
+        </div>
+        <div class="question__comment">
+          <p>Прокомментируйте, пожалуйста, почему Вы поставили невысокую оценку?</p>
+          <textarea class="comment" name="${questionId}-comment" placeholder="Ваш комментарий" wrap="soft" maxlength="1000" rows="1"></textarea>
+        </div>
+      `;
+
+      const grade = answer.querySelector('.question__grade');
       
       for (let i = 0; i < 11; i++) { //оценка от 0 до 10
         grade.innerHTML += `
@@ -19,16 +34,25 @@ window.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  renderQuestionGrades();
+  renderAnswer();
 
-  const progressBar = document.querySelector('.pagination-question__progressbar'),
-        slidesForm1 = document.querySelectorAll('#form1 .swiper-slide');
+  const progressBars = document.querySelectorAll('.pagination-question__progressbar'),
+        slidesForm1 = document.querySelectorAll('#form1 .swiper-slide'),
+        slidesForm2 = document.querySelectorAll('#form2 .swiper-slide');
 
   function renderProgressBar() {
-    progressBar.innerHTML = '<li class="fill"></li>';
-    for (let k = 1; k < slidesForm1.length; k++) {
-      progressBar.innerHTML += '<li></li>';
-    }
+    progressBars.forEach((bar, b) => {
+      bar.innerHTML = '<li class="fill"></li>';
+      let barLength = '';
+      if (b == 0) {
+        barLength = slidesForm1.length
+      } else {
+        barLength = slidesForm2.length
+      }
+      for (let k = 1; k < barLength; k++) {
+        bar.innerHTML += '<li></li>';
+      }
+    })
   }
 
   renderProgressBar();
@@ -54,6 +78,8 @@ window.addEventListener('DOMContentLoaded', () => {
       swiper.slideNext(800);
     }, 1000);
   }
+
+  const questionGrades = document.querySelectorAll('.question__grade');
 
   function onchangeInputGrade() {
     questionGrades.forEach(grade => {
@@ -123,7 +149,7 @@ window.addEventListener('DOMContentLoaded', () => {
     questionPage.classList.toggle('fade');
   })
   
-  const swiper = new Swiper('.swiper', {
+  const swiper = new Swiper('.swiper1', {
     pagination: {
       el: '.swiper-pagination',
       type: 'fraction',
@@ -137,13 +163,26 @@ window.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  
-  function progressBarFilling() {
-    const fractionsProgressBar = [...progressBar.children];
+  const swiper2 = new Swiper('.swiper2', {
+    pagination: {
+      el: '.swiper-pagination-next',
+      type: 'fraction',
+      renderFraction: function(currentClass, totalClass) {
+        return `
+          <span class="question-current ${currentClass}"></span>
+          /
+          <span class="question-total ${totalClass}"></span>
+          `
+      }
+    }
+  });
 
-    swiper.on('slideChange', () => {
+  function progressBarFilling(swipe, progBar) {
+    const fractionsProgressBar = [...progBar.children];
+
+    swipe.on('slideChange', () => {
       fractionsProgressBar.forEach((fraction, f) => {
-        if (f <= swiper.activeIndex) {
+        if (f <= swipe.activeIndex) {
           fraction.classList.add('fill');
         } else {
           fraction.classList.remove('fill');
@@ -152,16 +191,34 @@ window.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  progressBarFilling();
+  progressBarFilling(swiper, progressBars[0]);
+  progressBarFilling(swiper2, progressBars[1]);
 
   const questionsSimple = document.querySelectorAll('.question-simple'),
         headerQuestion = document.querySelector('.header-question'),
         headerQuestionHeight = window.getComputedStyle(headerQuestion).height,
         windowInnerHeight = document.documentElement.clientHeight;
 
-
   questionsSimple.forEach(question => {
     question.style.height = windowInnerHeight - headerQuestionHeight.slice(0,-2) + 'px';
   })
+
+  const inputLastQuestionForm1 = document.querySelectorAll('#q4 input'),
+        startPageNext = document.querySelector('.start-page.next');
+
+  function formNext() {
+    inputLastQuestionForm1.forEach(input => {
+      input.addEventListener('change', () => {
+        questionPage.classList.toggle('hide');
+        questionPage.classList.toggle('fade');
+        startPageNext.classList.toggle('hide');
+        startPageNext.classList.toggle('fade');
+        
+      });
+    });
+  }
+
+  formNext();
+  
 
 });

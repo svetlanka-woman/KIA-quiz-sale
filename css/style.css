@@ -142,6 +142,11 @@ body {
   color: #08141E;
 }
 
+.button-bd-white {
+  border: 1px solid #fff;
+  color: #fff;
+}
+
 @media (min-width: 468px) {
   .padding-left-right {
     padding: 0 30px;
@@ -218,17 +223,28 @@ body {
       -ms-flex: 0 0 auto;
           flex: 0 0 auto;
   font-size: 24px;
-  margin: 47px 0 80px;
+  margin: 47px 0 58px;
   line-height: 30px;
 }
 
 .body-start-page__group-button {
   padding-bottom: 26px;
 }
-.body-start-page__group-button p {
+
+.body-start-page__text {
   margin-bottom: 48px;
   font-size: 14px;
   text-transform: uppercase;
+}
+
+.start-page.next .body-start-page__text {
+  margin-top: 39px;
+  margin-bottom: 0;
+}
+
+.start-page.end .header-start-page__title {
+  font-size: 24px;
+  line-height: 30px;
 }
 
 @media (max-width: 380px) {
@@ -394,7 +410,7 @@ body {
   outline: none;
   resize: none;
   padding: 10px 0;
-  font-size: 14px;
+  font-size: 16px;
   overflow: hidden;
 }
 .question__comment textarea::-webkit-input-placeholder {
@@ -412,6 +428,11 @@ body {
 .question__comment textarea::placeholder {
   color: rgba(0, 0, 0, 0.4);
   font-size: 14px;
+}
+
+.question-page.next .pagination-question__progressbar {
+  -webkit-column-gap: 6px;
+          column-gap: 6px;
 }
 
 @media (max-width: 380px) {

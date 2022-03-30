@@ -117,21 +117,23 @@
           <p class="body-start-page__text">Это займет не более 3-5 минут</p>
         </div>
         <div class="body-start-page__group-button">
-          <button class="button button-white">Да</button>
-          <button class="button button-bd-white">Нет</button>
+          <button class="button button-white btn-yes">Да</button>
+          <button class="button button-bd-white btn-no">Нет</button>
         </div>
       </div>
     </div> 
   </div> <!--* start-page next -->
 
-  <div class="question-page next">
+  <div class="question-page next hide">
     <div class="question-page__container container">
       
       <div class="question-page__header header-question padding-left-right">         
         <div class="header-question__logo logo"></div>
         <div class="header-question__pagination pagination-question">
           <div class="pagination-question__fraction swiper-pagination-next">
-            <!-- pagination[renderFraction] -->
+            <span class="question-current"></span>
+            /
+            <span class="question-total"></span>
           </div>
           <ul class="pagination-question__progressbar">
             <!-- renderProgressBar() -->
@@ -196,7 +198,7 @@
                   <label for="q8-1-no" class="button button-bd-black">Нет</label>
                 </div>
               </div>
-              <div id="q8-2" class="question question-simple padding-left-right">
+              <div id="q8-2" class="question question-simple padding-left-right hide">
                 <div class="question__question">
                   <p>Вы совершили тест-драйв?</p>
                 </div>
@@ -207,7 +209,7 @@
                   <label for="q8-2-no" class="button button-bd-black">Нет</label>
                 </div>
               </div>
-              <div id="q8-3" class="question padding-left-right">
+              <div id="q8-3" class="question padding-left-right hide">
                 <div class="question__question">
                   <p>Насколько бы Вы оценили проведенный тест-драйв?</p>
                 </div>

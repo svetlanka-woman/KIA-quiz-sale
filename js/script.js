@@ -73,83 +73,7 @@ window.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  function swiperNext() {
-    setTimeout(() => {
-      swiper.slideNext(800);
-    }, 1000);
-  }
-
-  const questionGrades = document.querySelectorAll('.question__grade');
-
-  function onchangeInputGrade() {
-    questionGrades.forEach(grade => {
-      
-      const inputGrade = grade.querySelectorAll('input'),
-            bulletGrade = grade.querySelectorAll('label');
-      let comment = ''; 
-            
-      if (grade.nextElementSibling.nextElementSibling.classList.contains('question__comment')) {
-        comment = grade.nextElementSibling.nextElementSibling;
-        comment.classList.add('hide');
-      };
-      
-      comment.addEventListener('change', () => {
-        scrollTopPage();
-        swiperNext();
-      });
-
-      inputGrade.forEach((input, i) => {
-        input.addEventListener('change', () => {
-          if (input.checked) {
-            // change bg-color in bullets
-            bulletGrade.forEach(bullet => {
-              bullet.style.backgroundColor = 'transparent';
-            });
-            bulletGrade[i].style.backgroundColor = arrColorsGrade[i];
-            
-            if (input.value <= 7) {
-              comment.classList.add('show', 'fade');
-              comment.classList.remove('hide', 'fade-out');
-              scrollShowElement(comment);
-            } else {
-              scrollTopPage();
-              setTimeout(() => {
-                comment.classList.add('hide');
-              }, 400);
-              comment.classList.add('fade-out');
-              comment.classList.remove('show', 'fade');
-              swiperNext();
-            }
-          }
-        });
-      });
-    });
-  }
-
-  onchangeInputGrade();
-
-  const textareaComment = document.querySelectorAll('.comment');
-
-  textareaComment.forEach(comment => {
-    comment.addEventListener('input', (e) => {
-      const elem = e.target;
-      
-      elem.style.cssText = 'height: auto;';
-      elem.style.cssText = 'height:' + elem.scrollHeight + 'px';
-    });
-  });
-
-  const startButton = document.getElementById('start-button'),
-        startPage = document.querySelector('.start-page'),
-        questionPage = document.querySelector('.question-page');
-
-  startButton.addEventListener('click', () => {
-    startPage.classList.toggle('hide');
-    questionPage.classList.toggle('hide');
-    questionPage.classList.toggle('fade');
-  })
-  
-  const swiper = new Swiper('.swiper1', {
+  const swiper1 = new Swiper('.swiper1', {
     pagination: {
       el: '.swiper-pagination',
       type: 'fraction',
@@ -163,26 +87,96 @@ window.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  const swiper2 = new Swiper('.swiper2', {
-    pagination: {
-      el: '.swiper-pagination-next',
-      type: 'fraction',
-      renderFraction: function(currentClass, totalClass) {
-        return `
-          <span class="question-current ${currentClass}"></span>
-          /
-          <span class="question-total ${totalClass}"></span>
-          `
-      }
-    }
+  const swiper2 = new Swiper('.swiper2');
+
+  function swiperNext(swiper) {
+    setTimeout(() => {
+      swiper.slideNext(800);
+    }, 1000);
+  }
+
+  const questionGradesSwiper1 = document.querySelectorAll('.swiper1 .question__grade'),
+        questionGradesSwiper2 = document.querySelectorAll('.swiper2 .question__grade');
+
+  function onchangeInputGrade(grades, swiper) {
+    grades.forEach(grade => {
+      
+      const inputsGrade = grade.querySelectorAll('input'),
+            bulletsGrade = grade.querySelectorAll('label');
+      let comment = ''; 
+            
+      if (grade.nextElementSibling.nextElementSibling.classList.contains('question__comment')) {
+        comment = grade.nextElementSibling.nextElementSibling;
+        comment.classList.add('hide');
+      };
+      
+      comment.addEventListener('change', () => {
+        scrollTopPage();
+        swiperNext(swiper);
+      });
+
+      inputsGrade.forEach((input, i) => {
+        input.addEventListener('change', () => {
+          if (input.checked) {
+            // change bg-color in bullets
+            bulletsGrade.forEach(bullet => {
+              bullet.style.backgroundColor = 'transparent';
+            });
+            bulletsGrade[i].style.backgroundColor = arrColorsGrade[i];
+            
+            if (input.value <= 7) {
+              comment.classList.add('show', 'fade');
+              comment.classList.remove('hide', 'fade-out');
+              scrollShowElement(comment);
+            } else {
+              scrollTopPage();
+              setTimeout(() => {
+                comment.classList.add('hide');
+              }, 400);
+              comment.classList.add('fade-out');
+              comment.classList.remove('show', 'fade');
+              swiperNext(swiper);
+            }
+          }
+        });
+      });
+    });
+  }
+
+  onchangeInputGrade(questionGradesSwiper1, swiper1);
+  onchangeInputGrade(questionGradesSwiper2, swiper2);
+
+  const textareaComment = document.querySelectorAll('.comment');
+
+  textareaComment.forEach(comment => {
+    comment.addEventListener('input', (e) => {
+      const elem = e.target;
+      
+      elem.style.cssText = 'height: auto;';
+      elem.style.cssText = 'height:' + elem.scrollHeight + 'px';
+    });
   });
 
-  function progressBarFilling(swipe, progBar) {
+  function hideThisShowNext(thisPage, nextPage) {
+    thisPage.classList.toggle('hide');
+    nextPage.classList.toggle('hide');
+    nextPage.classList.toggle('fade');
+  }
+
+  const startButton = document.getElementById('start-button'),
+        startPage = document.querySelector('.start-page'),
+        questionPage = document.querySelector('.question-page');
+
+  startButton.addEventListener('click', () => {
+    hideThisShowNext(startPage, questionPage);
+  })
+
+  function progressBarFilling(swiper, progBar) {
     const fractionsProgressBar = [...progBar.children];
 
-    swipe.on('slideChange', () => {
+    swiper.on('slideChange', () => {
       fractionsProgressBar.forEach((fraction, f) => {
-        if (f <= swipe.activeIndex) {
+        if (f <= swiper.activeIndex) {
           fraction.classList.add('fill');
         } else {
           fraction.classList.remove('fill');
@@ -191,31 +185,56 @@ window.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  progressBarFilling(swiper, progressBars[0]);
+  progressBarFilling(swiper1, progressBars[0]);
   progressBarFilling(swiper2, progressBars[1]);
 
-  const questionsSimple = document.querySelectorAll('.question-simple'),
+  const questionCurrent = document.querySelector('.question-page.next .question-current'),
+        questionTotal = document.querySelector('.question-page.next .question-total')
+
+  function renderFractionQuestionPageNext() {
+    questionCurrent.textContent = 1 + slidesForm1.length;
+    questionTotal.textContent = slidesForm2.length + slidesForm1.length;
+    swiper2.on('slideChange', () => {
+      questionCurrent.textContent = swiper2.activeIndex + 1 + slidesForm1.length;
+    });
+  }
+
+  renderFractionQuestionPageNext();
+
+  function renderQuestionSimpleHeight() {
+    const questionsSimple = document.querySelectorAll('.question-simple'),
         headerQuestion = document.querySelector('.header-question'),
         headerQuestionHeight = window.getComputedStyle(headerQuestion).height,
         windowInnerHeight = document.documentElement.clientHeight;
 
-  questionsSimple.forEach(question => {
-    question.style.height = windowInnerHeight - headerQuestionHeight.slice(0,-2) + 'px';
-  })
+    questionsSimple.forEach(question => {
+      question.style.height = windowInnerHeight - headerQuestionHeight.slice(0,-2) + 'px';
+    });
+  }
+
+  renderQuestionSimpleHeight();
 
   const inputLastQuestionForm1 = document.querySelectorAll('#q4 input'),
-        startPageNext = document.querySelector('.start-page.next');
+        buttonsStartPageNext = document.querySelectorAll('.start-page.next button'),
+        startPageNext = document.querySelector('.start-page.next'),
+        questionPageNext = document.querySelector('.question-page.next'),
+        startPageEnd = document.querySelector('.start-page.end');
 
   function formNext() {
     inputLastQuestionForm1.forEach(input => {
       input.addEventListener('change', () => {
-        questionPage.classList.toggle('hide');
-        questionPage.classList.toggle('fade');
-        startPageNext.classList.toggle('hide');
-        startPageNext.classList.toggle('fade');
-        
+        hideThisShowNext(questionPage, startPageNext);  
       });
     });
+    buttonsStartPageNext.forEach(button => {
+      button.addEventListener('click', () => {
+        if (button.classList.contains('btn-yes')) {
+          hideThisShowNext(startPageNext, questionPageNext);
+        } else {
+          hideThisShowNext(startPageNext, startPageEnd);
+        }
+      })
+    })
   }
 
   formNext();

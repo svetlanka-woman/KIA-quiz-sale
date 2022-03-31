@@ -56,7 +56,7 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 
   renderProgressBar();
- 
+
   function scrollShowElement(elem) {
     let elemHeight = elem.getBoundingClientRect().height;  
 
@@ -92,13 +92,13 @@ window.addEventListener('DOMContentLoaded', () => {
   function swiperNext(swiper) {
     setTimeout(() => {
       swiper.slideNext(800);
-    }, 1000);
+    }, 800);
   }
 
   const questionGradesSwiper1 = document.querySelectorAll('.swiper1 .question__grade'),
         questionGradesSwiper2 = document.querySelectorAll('.swiper2 .question__grade');
 
-  function onchangeInputGrade(grades, swiper) {
+  function onСhangeInputGrade(grades, swiper) {
     grades.forEach(grade => {
       
       const inputsGrade = grade.querySelectorAll('input'),
@@ -143,8 +143,8 @@ window.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  onchangeInputGrade(questionGradesSwiper1, swiper1);
-  onchangeInputGrade(questionGradesSwiper2, swiper2);
+  onСhangeInputGrade(questionGradesSwiper1, swiper1);
+  onСhangeInputGrade(questionGradesSwiper2, swiper2);
 
   const textareaComment = document.querySelectorAll('.comment');
 
@@ -214,14 +214,14 @@ window.addEventListener('DOMContentLoaded', () => {
 
   renderQuestionSimpleHeight();
 
-  const inputLastQuestionForm1 = document.querySelectorAll('#q4 input'),
+  const inputsLastQuestionForm1 = document.querySelectorAll('#q4 input'),
         buttonsStartPageNext = document.querySelectorAll('.start-page.next button'),
         startPageNext = document.querySelector('.start-page.next'),
         questionPageNext = document.querySelector('.question-page.next'),
         startPageEnd = document.querySelector('.start-page.end');
 
   function formNext() {
-    inputLastQuestionForm1.forEach(input => {
+    inputsLastQuestionForm1.forEach(input => {
       input.addEventListener('change', () => {
         hideThisShowNext(questionPage, startPageNext);  
       });
@@ -238,6 +238,62 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 
   formNext();
-  
+
+  const q8_1 = document.getElementById('q8-1'),
+        q8_2 = document.getElementById('q8-2'),
+        q8_3 = document.getElementById('q8-3');
+
+  function onChangeInputQ7() {
+    const inputsQ7 = document.querySelectorAll('#q7 input');
+
+    inputsQ7.forEach(input => {
+      input.addEventListener('change', () => {
+        if (input.value == 'yes') {
+          q8_1.classList.add('hide');
+          q8_2.classList.remove('hide');
+          q8_3.classList.add('hide');
+          swiperNext(swiper2);
+        } else {
+          q8_1.classList.remove('hide');
+          q8_2.classList.add('hide');
+          q8_3.classList.add('hide');
+          swiperNext(swiper2);
+        }
+      });
+    });
+  }
+  onChangeInputQ7();
+
+  function onChangeInputQ8() {
+    const inputsQ8_1 = document.querySelectorAll('#q8-1 input'),
+          inputsQ8_2 = document.querySelectorAll('#q8-2 input'),
+          inputsQ8_3 = document.querySelectorAll('#q8-2 input');
+
+    inputsQ8_1.forEach(input => {
+      input.addEventListener('change', () => {
+        if (input.value == 'yes') {
+          q8_1.classList.add('hide');
+          q8_2.classList.remove('hide');
+          q8_2.classList.add('fade');
+
+        } else {
+          swiperNext(swiper2);
+        }
+      });
+    });
+
+    inputsQ8_2.forEach(input => {
+      input.addEventListener('change', () => {
+        if (input.value == 'yes') {
+          q8_2.classList.add('hide');
+          q8_3.classList.remove('hide');
+          q8_3.classList.add('fade');
+        } else {
+          swiperNext(swiper2);
+        }
+      });
+    });
+  }
+  onChangeInputQ8();
 
 });

@@ -110,9 +110,15 @@ window.addEventListener('DOMContentLoaded', () => {
         comment.classList.add('hide');
       };
       
+     
+
       comment.addEventListener('change', () => {
         scrollTopPage();
-        swiperNext(swiper);
+        if (grade.parentElement.parentElement.getAttribute('id') == 'q12') {
+          hideThisShowNext(questionPageNext, startPageEnd);
+        } else {
+          swiperNext(swiper);
+        };
       });
 
       inputsGrade.forEach((input, i) => {
@@ -129,13 +135,18 @@ window.addEventListener('DOMContentLoaded', () => {
               comment.classList.remove('hide', 'fade-out');
               scrollShowElement(comment);
             } else {
-              scrollTopPage();
+              if (grade.parentElement.parentElement.getAttribute('id') == 'q12') {
+                hideThisShowNext(questionPageNext, startPageEnd);
+              } else {
+                scrollTopPage();
               setTimeout(() => {
                 comment.classList.add('hide');
+                comment.querySelector('.comment').value = '';
               }, 400);
               comment.classList.add('fade-out');
               comment.classList.remove('show', 'fade');
               swiperNext(swiper);
+              };
             }
           }
         });
@@ -266,8 +277,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   function onChangeInputQ8() {
     const inputsQ8_1 = document.querySelectorAll('#q8-1 input'),
-          inputsQ8_2 = document.querySelectorAll('#q8-2 input'),
-          inputsQ8_3 = document.querySelectorAll('#q8-2 input');
+          inputsQ8_2 = document.querySelectorAll('#q8-2 input');
 
     inputsQ8_1.forEach(input => {
       input.addEventListener('change', () => {
@@ -295,5 +305,16 @@ window.addEventListener('DOMContentLoaded', () => {
     });
   }
   onChangeInputQ8();
+
+  function onChangeInputQ10() {
+    const inputsQ10 = document.querySelectorAll('#q10 input');
+
+    inputsQ10.forEach(input => {
+      input.addEventListener('change', () => {
+        swiperNext(swiper2);
+      });
+    });
+  }
+  onChangeInputQ10();
 
 });

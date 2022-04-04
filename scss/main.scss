@@ -42,11 +42,17 @@ body {
 	margin-bottom: 20px;
 	display: inline-block;
 	line-height: 46px;
+	&:active {
+		opacity: 0.5;
+	}
 }
 
 .button-black {
 	background-color: $colorDark;
 	color: $colorWhite;
+	&:checked {
+		opacity: 0.5;
+	}
 }
 
 .button-white {

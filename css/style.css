@@ -134,9 +134,6 @@ body {
   background-color: #08141E;
   color: #fff;
 }
-.button-black:checked {
-  opacity: 0.5;
-}
 
 .button-white {
   background-color: #fff;
@@ -445,6 +442,13 @@ body {
 .question-page.next .pagination-question__progressbar {
   -webkit-column-gap: 6px;
           column-gap: 6px;
+}
+
+.message {
+  margin-top: 20px;
+  font-size: 18px;
+  color: red;
+  text-align: center;
 }
 
 @media (max-width: 380px) {

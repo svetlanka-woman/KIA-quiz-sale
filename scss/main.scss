@@ -50,9 +50,6 @@ body {
 .button-black {
 	background-color: $colorDark;
 	color: $colorWhite;
-	&:checked {
-		opacity: 0.5;
-	}
 }
 
 .button-white {

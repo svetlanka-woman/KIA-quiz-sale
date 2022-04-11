@@ -33,7 +33,6 @@ window.addEventListener('DOMContentLoaded', () => {
       };
     });
   }
-
   renderAnswer();
 
   const progressBars = document.querySelectorAll('.pagination-question__progressbar'),
@@ -54,7 +53,6 @@ window.addEventListener('DOMContentLoaded', () => {
       }
     })
   }
-
   renderProgressBar();
 
   function scrollShowElement(elem) {
@@ -109,8 +107,6 @@ window.addEventListener('DOMContentLoaded', () => {
         comment = grade.nextElementSibling.nextElementSibling;
         comment.classList.add('hide');
       };
-      
-     
 
       comment.addEventListener('change', () => {
         scrollTopPage();
@@ -130,6 +126,8 @@ window.addEventListener('DOMContentLoaded', () => {
             });
             bulletsGrade[i].style.backgroundColor = arrColorsGrade[i];
             
+            removeMessage(grade.parentElement.nextElementSibling);
+
             if (input.value <= 7) {
               comment.classList.add('show', 'fade');
               comment.classList.remove('hide', 'fade-out');
@@ -153,9 +151,37 @@ window.addEventListener('DOMContentLoaded', () => {
       });
     });
   }
-
   onСhangeInputGrade(questionGradesSwiper1, swiper1);
   onСhangeInputGrade(questionGradesSwiper2, swiper2);
+
+  function verifyPrevAnswer(swiper) {
+    swiper.on('slideNextTransitionEnd', () => {
+      const swiperSlidePrev = swiper.el.querySelector('.swiper-slide-prev'),
+            questionSlidePrev = swiperSlidePrev.querySelector('.question:not(.question.hide)'),
+            inputsSlidePrev = questionSlidePrev.querySelectorAll('input');
+
+      console.log(questionSlidePrev);
+      const checkedSome = [...inputsSlidePrev].some(input => input.checked); 
+      
+      if (!checkedSome) {
+        if (!questionSlidePrev.querySelector('.message')) {
+          const message = document.createElement('div');
+        message.classList.add('message');
+        message.textContent = `Оцените, пожалуйста!`;
+        questionSlidePrev.append(message);
+        }
+        swiper.slidePrev(1200);
+      }
+    });
+  }
+  verifyPrevAnswer(swiper1);
+  verifyPrevAnswer(swiper2);
+
+  function removeMessage(message) {
+    if (message && message.classList.contains('message')) {
+      message.remove();
+    };
+  }
 
   const textareaComment = document.querySelectorAll('.comment');
 
@@ -195,7 +221,6 @@ window.addEventListener('DOMContentLoaded', () => {
       });
     });
   }
-
   progressBarFilling(swiper1, progressBars[0]);
   progressBarFilling(swiper2, progressBars[1]);
 
@@ -209,7 +234,6 @@ window.addEventListener('DOMContentLoaded', () => {
       questionCurrent.textContent = swiper2.activeIndex + 1 + slidesForm1.length;
     });
   }
-
   renderFractionQuestionPageNext();
 
   function renderQuestionSimpleHeight() {
@@ -222,7 +246,6 @@ window.addEventListener('DOMContentLoaded', () => {
       question.style.height = windowInnerHeight - headerQuestionHeight.slice(0,-2) + 'px';
     });
   }
-
   renderQuestionSimpleHeight();
 
   const inputsLastQuestionForm1 = document.querySelectorAll('#q4 input'),
@@ -231,7 +254,7 @@ window.addEventListener('DOMContentLoaded', () => {
         questionPageNext = document.querySelector('.question-page.next'),
         startPageEnd = document.querySelector('.start-page.end');
 
-  function formNext() {
+  function onChangeInputsLastQuestionForm1() {
     inputsLastQuestionForm1.forEach(input => {
       input.addEventListener('change', () => {
         hideThisShowNext(questionPage, startPageNext);  
@@ -247,8 +270,7 @@ window.addEventListener('DOMContentLoaded', () => {
       })
     })
   }
-
-  formNext();
+  onChangeInputsLastQuestionForm1();
 
   const q8_1 = document.getElementById('q8-1'),
         q8_2 = document.getElementById('q8-2'),
@@ -270,6 +292,7 @@ window.addEventListener('DOMContentLoaded', () => {
           q8_3.classList.add('hide');
           swiperNext(swiper2);
         }
+        removeMessage(document.querySelector('#q7 .message'));
       });
     });
   }
@@ -312,6 +335,7 @@ window.addEventListener('DOMContentLoaded', () => {
     inputsQ10.forEach(input => {
       input.addEventListener('change', () => {
         swiperNext(swiper2);
+        removeMessage(document.querySelector('#q10 .message'));
       });
     });
   }

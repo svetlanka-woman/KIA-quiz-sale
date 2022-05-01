@@ -111,7 +111,8 @@ window.addEventListener('DOMContentLoaded', () => {
       comment.addEventListener('change', () => {
         scrollTopPage();
         if (grade.parentElement.parentElement.getAttribute('id') == 'q12') {
-          hideThisShowNext(questionPageNext, startPageEnd);
+          submitButton = 'End';
+          form2.requestSubmit();
         } else {
           swiperNext(swiper);
         };
@@ -134,7 +135,8 @@ window.addEventListener('DOMContentLoaded', () => {
               scrollShowElement(comment);
             } else {
               if (grade.parentElement.parentElement.getAttribute('id') == 'q12') {
-                hideThisShowNext(questionPageNext, startPageEnd);
+                submitButton = 'End';
+                form2.requestSubmit();
               } else {
                 scrollTopPage();
               setTimeout(() => {
@@ -160,7 +162,6 @@ window.addEventListener('DOMContentLoaded', () => {
             questionSlidePrev = swiperSlidePrev.querySelector('.question:not(.question.hide)'),
             inputsSlidePrev = questionSlidePrev.querySelectorAll('input');
 
-      console.log(questionSlidePrev);
       const checkedSome = [...inputsSlidePrev].some(input => input.checked); 
       
       if (!checkedSome) {
@@ -252,25 +253,38 @@ window.addEventListener('DOMContentLoaded', () => {
         buttonsStartPageNext = document.querySelectorAll('.start-page.next button'),
         startPageNext = document.querySelector('.start-page.next'),
         questionPageNext = document.querySelector('.question-page.next'),
-        startPageEnd = document.querySelector('.start-page.end');
+        startPageEnd = document.querySelector('.start-page.end'),
+        form1 = document.getElementById('form1'),
+        form2 = document.getElementById('form2');
 
+  
+  bindPostData(form1, startPageNext);
+  bindPostData(form2, questionPageNext);
+  
   function onChangeInputsLastQuestionForm1() {
     inputsLastQuestionForm1.forEach(input => {
       input.addEventListener('change', () => {
         hideThisShowNext(questionPage, startPageNext);  
       });
     });
+  }
+  onChangeInputsLastQuestionForm1();
+
+  let submitButton = '';
+
+  function onClickButtonsSubmitForm1() {
     buttonsStartPageNext.forEach(button => {
       button.addEventListener('click', () => {
         if (button.classList.contains('btn-yes')) {
-          hideThisShowNext(startPageNext, questionPageNext);
+          submitButton = 'Yes';
         } else {
-          hideThisShowNext(startPageNext, startPageEnd);
+          submitButton = 'No';
         }
-      })
-    })
+        button.parentElement.classList.add('hide');
+      });
+    });
   }
-  onChangeInputsLastQuestionForm1();
+  onClickButtonsSubmitForm1();
 
   const q8_1 = document.getElementById('q8-1'),
         q8_2 = document.getElementById('q8-2'),
@@ -308,7 +322,6 @@ window.addEventListener('DOMContentLoaded', () => {
           q8_1.classList.add('hide');
           q8_2.classList.remove('hide');
           q8_2.classList.add('fade');
-
         } else {
           swiperNext(swiper2);
         }
@@ -340,5 +353,73 @@ window.addEventListener('DOMContentLoaded', () => {
     });
   }
   onChangeInputQ10();
+
+  const postData = async (url, data) => {
+    const result = await fetch(url, {
+      method: "POST",
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: data
+    });
+    return await result.json();
+  };
+
+  function afterSubmit() {
+    switch (submitButton) {
+      case 'Yes': 
+        hideThisShowNext(startPageNext, questionPageNext);
+        break;
+      case 'No': 
+        hideThisShowNext(startPageNext, startPageEnd);
+        break;
+      case 'End': 
+        hideThisShowNext(questionPageNext, startPageEnd);
+        break;
+      default: 
+        break;
+    }
+  }
+
+  function bindPostData(form, submitPageForm) {
+
+    form.addEventListener('submit', (e) => {
+    e.preventDefault();
+      const spinnerLoad = document.createElement('div');
+      
+      spinnerLoad.innerHTML = "<img src='img/spinner.svg' width='150' height='150'>";
+      spinnerLoad.style.cssText = `
+        display: block;
+        position: absolute;
+        bottom: 40px;
+        width: 100%;
+        text-align: center;
+        `;
+      submitPageForm.insertAdjacentElement('afterend', spinnerLoad);
+
+      const formData = new FormData(form),
+            jsonData = JSON.stringify(Object.fromEntries(formData.entries()));
+
+      postData('https://jsonplaceholder.typicode.com/posts', jsonData)
+        .then(data => {
+          console.log(data);
+          afterSubmit();
+        })
+        .catch(() => {
+          const startPageEndText = document.querySelector('.start-page.end .body-start-page__text');
+          startPageEndText.classList.add('message');
+          startPageEndText.textContent = 'Что-то пошло не так...';
+          hideThisShowNext(submitPageForm, startPageEnd);
+        })
+        .finally(() => {
+          form.reset();
+          spinnerLoad.remove();
+        });
+    });
+  }
+
+  
+    
+  
 
 });
